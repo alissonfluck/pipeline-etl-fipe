@@ -10,7 +10,7 @@ if response.status_code == 200:
 
     data = response.json()
 
-    with open("marcas_fipe.json", "w") as arquivo:
+    with open("data/marcas_fipe.json", "w") as arquivo:
         json.dump(data, arquivo, indent=4)
 
     print("Ingestão concluída! Arquivo marcas_fipe.json gerado.")

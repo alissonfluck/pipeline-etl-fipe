@@ -35,7 +35,7 @@ for marca in lista_marcas[:3]:
 
 
 print("\nSalvando os dados consolidados...")
-with open("modelos_fipe.json", "w") as arquivo_final:
+with open("data/modelos_fipe.json", "w") as arquivo_final:
     json.dump(todos_modelos, arquivo_final, indent=4)
 
 print("Sucesso! Arquivo modelos_fipe.json gerado localmente.")

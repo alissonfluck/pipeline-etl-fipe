@@ -35,7 +35,7 @@ for marca in dados_modelos[:2]:
             time.sleep(1)
 
 print("\nSalvando dados...")
-with open("precos_fipe.json", "w") as final_file:
+with open("data/precos_fipe.json", "w") as final_file:
     json.dump(frota_atual, final_file, indent=4)
 
 print("Sucesso! Arquivo precos_fipe.json gerado.")

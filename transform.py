@@ -3,7 +3,7 @@ import json
 
 print("Carregando os dados do Data Lake...")
 # Ler JSON da extração
-with open("precos_fipe.json", "r") as file:
+with open("data/precos_fipe.json", "r") as file:
     data = json.load(file)
 
 df = pd.DataFrame(data)
@@ -18,10 +18,8 @@ df["Valor"] = df["Valor"].str.replace(",", ".")
 # Converter string para float
 df["Valor"] = df["Valor"].astype(float)
 
-print("Visualizando as primeiras linhas após a limpeza:")
-print(df.head())
+print("Salvando dados limpos na Camada Silver...")
+df.to_csv("data/precos_limpos.csv", index=False, sep=";")
+print("Sucesso! Transformação concluída.")
 
-print("\nSalvando em CSV...")
-df.to_csv("data/fipe_dados_limpos.csv", index=False, sep=";")
-print("Pipeline concluído! Arquivo fipe_dados_limpos.csv gerado.")
 

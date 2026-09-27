@@ -11,16 +11,22 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
 
     print("Iniciando limpeza de dados...")
     # Remover R$
-    df["Valor"] = df["Valor"].str.replace("R$", "")
+    df["price"] = df["price"].str.replace("R$", "")
     # Remover casa do milhar
-    df["Valor"] = df["Valor"].str.replace(".", "")
+    df["price"] = df["price"].str.replace(".", "")
     # Trocar vírgula centavos por ponto
-    df["Valor"] = df["Valor"].str.replace(",", ".")
+    df["price"] = df["price"].str.replace(",", ".")
     # Converter string para float
-    df["Valor"] = df["Valor"].astype(float)
+    df["price"] = df["price"].astype(float)
+
+    # Enriquecimento
+    dicionario_tipos_veiculo = {1: "Carro", 2: "Moto", 3: "Caminhão"}
+    df["vehicleType"] = df["vehicleType"].replace(dicionario_tipos_veiculo)
 
     print(f"Salvando dados limpos na Camada Silver em {caminho_saida}...")
     df.to_csv(caminho_saida, index=False, sep=";")
     print("Sucesso! Transformação concluída.")
+
+
 
 

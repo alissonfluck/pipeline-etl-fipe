@@ -18,6 +18,9 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
     df["price"] = df["price"].str.replace(",", ".")
     # Converter string para float
     df["price"] = df["price"].astype(float)
+    # Padronizando nomes das marcas
+    df['Brand'] = df['Brand'].str.capitalize()
+    df['Model'] = df['Model'].str.capitalize()
 
     # Enriquecimento
     dicionario_tipos_veiculo = {1: "Carro", 2: "Moto", 3: "Caminhão"}

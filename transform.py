@@ -26,6 +26,16 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
     dicionario_tipos_veiculo = {1: "Carro", 2: "Moto", 3: "Caminhão"}
     df["vehicleType"] = df["vehicleType"].replace(dicionario_tipos_veiculo)
 
+    df = df.rename(columns={ 
+            'Brand': 'marca',
+            'Model': 'modelo',
+            'ModelYear': 'ano_modelo',
+            'Price': 'preco',
+            'Fuel': 'combustivel',
+            'VehicleType': 'tipo_veiculo',
+            'ReferenceMonth': 'mes_referencia'
+        })
+
     print(f"Salvando dados limpos na Camada Silver em {caminho_saida}...")
     df.to_csv(caminho_saida, index=False, sep=";")
     print("Sucesso! Transformação concluída.")

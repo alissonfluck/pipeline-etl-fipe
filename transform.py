@@ -19,21 +19,24 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
     # Converter string para float
     df["price"] = df["price"].astype(float)
     # Padronizando nomes das marcas
-    df['Brand'] = df['Brand'].str.capitalize()
-    df['Model'] = df['Model'].str.capitalize()
+    df['brand'] = df['brand'].str.capitalize()
+    df['model'] = df['model'].str.capitalize()
+    
 
     # Enriquecimento
     dicionario_tipos_veiculo = {1: "Carro", 2: "Moto", 3: "Caminhão"}
     df["vehicleType"] = df["vehicleType"].replace(dicionario_tipos_veiculo)
 
+    # Removendo coluna fuelAcronym
+    df = df.drop('fuelAcronym', axis=1)
     df = df.rename(columns={ 
-            'Brand': 'marca',
-            'Model': 'modelo',
-            'ModelYear': 'ano_modelo',
-            'Price': 'preco',
-            'Fuel': 'combustivel',
-            'VehicleType': 'tipo_veiculo',
-            'ReferenceMonth': 'mes_referencia'
+            'brand': 'marca',
+            'model': 'modelo',
+            'modelYear': 'ano_modelo',
+            'price': 'preco',
+            'fuel': 'combustivel',
+            'vehicleType': 'tipo_veiculo',
+            'referenceMonth': 'mes_referencia'
         })
 
     print(f"Salvando dados limpos na Camada Silver em {caminho_saida}...")

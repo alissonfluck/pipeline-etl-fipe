@@ -19,8 +19,8 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
     # Converter string para float
     df["price"] = df["price"].astype(float)
     # Padronizando nomes das marcas
-    df['brand'] = df['brand'].str.capitalize()
-    df['model'] = df['model'].str.capitalize()
+    df['brand'] = df['brand'].str.title()
+    df['model'] = df['model'].str.title()
     
 
     # Enriquecimento
@@ -35,6 +35,7 @@ def limpar_dados_fipe(caminho_entrada, caminho_saida):
             'modelYear': 'ano_modelo',
             'price': 'preco',
             'fuel': 'combustivel',
+            'codeFipe': 'codigo_fipe',
             'vehicleType': 'tipo_veiculo',
             'referenceMonth': 'mes_referencia'
         })
